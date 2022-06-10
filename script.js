@@ -1,44 +1,34 @@
-// window.addEventListener('load', function(){
-//     const pullDownButton = document.getElementById("lists");
-// });
-
-// window.addEventListener('mouseover', function(){
-//     const pullDownButton = document.getElementById("lists");
-//     console.log(pullDownButton);
-// });
-
-// window.addEventListener('mouseout', function(){
-//     const pullDownButton = document.getElementById("lists");
-//     console.log(pullDownButton);
-//     pullDownButton.addEventListener('mouseover', function(){
-//         pullDownButton.setAttribute("style","background-color:blue");
-//     });
-//     pullDownButton.addEventListener('mouseout', function(){
-//         pullDownButton.removeAttribute("style", "background-color:red;");
-//     });
-//     pullDownButton.addEventListener('click', function(){
-//         pullDownButton.setAttribute("style", "background-color: green;");
-//     });
-// });
-
+function pullDown() {
 
 window.addEventListener('mouseout', function(){
-    const pullDownButton = document.getElementById("lists");
-    const pullDownParents = document.getElementById("pull-down");
+    const pullDownButton = document.getElementById("lists")
+    const pullDownParents = document.getElementById("pull-down")
+    const pullDownChild = document.querySelectorAll(".pull-down-list")
+    const currentList = document.getElementById("current-list")
 
     pullDownButton.addEventListener('mouseover', function(){
-        this.setAttribute("style", "background-color: blue;");
-    });
+        this.setAttribute("style", "background-color: blue;")
+    })
     pullDownButton.addEventListener('mouseout', function(){
-        this.removeAttribute("style", "background-color: red;");
-    });
+        this.removeAttribute("style", "background-color: red;")
+    })
     pullDownButton.addEventListener('click', function(){
         if(pullDownParents.getAttribute("style") == "display: block;"){
-            pullDownParents.removeAttribute("style", "display: block;");
-            console.log("非表示");
+            pullDownParents.removeAttribute("style", "display: block;")
+            console.log("非表示")
         } else {
-            pullDownParents.setAttribute("style", "display: block;");
-            console.log("表示");
-        };
-    });
-});
+            pullDownParents.setAttribute("style", "display: block;")
+            console.log("表示")
+        }
+    })
+    pullDownChild.forEach(function(list) {
+        list.addEventListener('click', function() {
+            const value = list.innerHTML
+            currentList.innerHTML = value
+        })
+    })
+})
+
+}
+
+window.addEventListener('load', pullDown)
