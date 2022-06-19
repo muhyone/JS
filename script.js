@@ -1,6 +1,5 @@
 function pullDown() {
 
-window.addEventListener('mouseout', function(){
     const pullDownButton = document.getElementById("lists")
     const pullDownParents = document.getElementById("pull-down")
     const pullDownChild = document.querySelectorAll(".pull-down-list")
@@ -27,8 +26,6 @@ window.addEventListener('mouseout', function(){
             currentList.innerHTML = value
         })
     })
-})
-
 }
 
 window.addEventListener('load', pullDown)
